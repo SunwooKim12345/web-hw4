@@ -1,14 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
+import './note-app.css';
+import NoteHeader from './NoteHeader';
 import reportWebVitals from './reportWebVitals';
+import NoteHeaderSm from './NoteHeaderSm';
+import {NoteBody} from './NoteBody';
+import Modal  from './Modal';
+
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+  <>
+    <NoteHeader />
+    <NoteHeaderSm />
+    <NoteBody />
+  </>
 );
 
 // If you want to start measuring performance in your app, pass a function

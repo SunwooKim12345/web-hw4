@@ -1,0 +1,448 @@
+/* Global CSS Variables: https://www.w3schools.com/css/css3_variables.asp */
+/* Reference these in your CSS to get the same color as the mockups */
+:root {
+  --actionBackgroundColor: #f76b8a;
+  --actionTextColor: white;
+  --activeColor: #66bfbf;
+  --standardBackgroundColor: #fcfefe;
+  --alternativeBackgroundColor: #eaf6f6;
+  --standardTextColor: black;
+  --lightThemeBG: lightgray;
+  --darkThemeBG: black;
+  --lightThemeText: black;
+  --darkThemeText: white;
+  --lightColor: lightgray;
+  --moderateColor: darkgray;
+  --sidebar-width: 240px;
+  --text-color: rgb(50, 50, 50);
+  --background-color: #ffffff;
+  --light-background-color: #f4f4f4;
+  --nav-bar-color: #ffffff;
+  --selected-color: rgb(229, 241, 253);
+  --action-text-color: #ffffff;
+  --action-color: rgb(58, 99, 197);
+  --border-color: darkgray;
+}
+
+.small-screen {
+  display: none;
+}
+
+
+body {
+  background-color: var(--standardBackgroundColor);
+  margin: 0px;
+}
+
+.note-id {
+  display: none;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus  {
+  outline-color: var(--activeColor);
+}
+
+select {
+  border-color: var(--moderateColor);
+}
+
+input[type=text] {
+  border-color: var(--lightColor);
+}
+
+input[type=submit]:hover,
+input[type=button]:hover,
+button:hover {
+  transform: scale(1.1);
+}
+
+/* 
+  - Header menu
+*/
+
+#mn-item-01 {
+  border: 1px solid var(--border-color);
+
+}
+
+#mn-item-02 {
+  border: 1px solid var(--border-color);
+  border-left: none;
+  border-right: none;
+  padding-left: 1vw;
+  
+  
+  
+}
+#mn-item-03 {
+  border: 1px solid var(--border-color);
+  border-left: none;
+  border-right: none;
+  
+  
+}
+#mn-item-04 {
+  border: 1px solid var(--border-color);
+  border-left: none;
+  padding-right: 1vw;
+  
+}
+
+/* 
+end
+*/
+
+/* 
+Menu align
+begin
+*/
+.v-align-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+.v-align-left {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  padding-left: 1vw;
+  float: left;
+}
+
+.v-align-right {
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  padding-right: 1vw;
+  float: right;
+}
+
+/*
+end
+*/
+
+/* 
+Menu bar sizing
+begin
+*/
+.grid-container {
+  display: grid;
+  grid-template-columns: 30vw auto auto auto;
+}
+
+.grid-container-01 {
+  display: grid;
+  grid-template-columns: auto auto auto;
+}
+
+.grid-container-02 {
+  display: grid;
+  grid-template-columns: 30vw 70vw;
+}
+
+.grid-container-03 {
+  display: grid;
+  grid-template-columns: auto auto;
+}
+
+.grid-container > div {
+  background-color: var(--background-color);
+  text-align: center;
+  padding: 20px 0;
+  font: 30px bold var(--text-color);
+}
+
+/* 
+end
+*/
+
+/*
+Image profile
+begin
+*/
+.img-round {
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+}
+
+.img-square {
+  border-radius: 0%;
+  height: 30px;
+  width: 30px;
+}
+
+/* 
+end
+*/
+
+/* 
+Searching panel 
+begin
+*/
+.search-panel {
+  padding: 1vw;
+}
+
+.text-box {
+  width: 20vw;
+  height: 5vw;
+}
+
+/* 
+end
+*/
+
+/*
+Content body
+begin
+*/
+.text-container {
+  border: 1px solid var(--border-color);
+  width: 30vw;
+  height: 50px;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 13px;
+  
+}
+
+.text-container-02 {
+  border: 1px solid var(--border-color);
+  width: 70vw;
+  height: 5vw;
+  margin-top: 1vw;
+  overflow: visible;
+  font-family: 'sans-serif';
+}
+
+.input-text {
+  width: 69.7vw;
+  height: 5vw;
+  margin-top: 1vw;
+  margin-right: 1vw;
+  overflow: visible;
+  word-wrap: break-word; 
+  white-space: normal;
+}
+
+.selected {
+  background-color: var(--selected-color);
+}
+
+/* 
+end
+*/
+
+/*
+Modal 
+begin
+*/
+.dark-mode {
+  background-color: var(--darkThemeBG);
+  color: var(--darkThemeText);
+  border-radius: 10px;
+}
+
+.light-mode {
+  background-color: var(--lightThemeBG);
+  color: var(--lightThemeText);
+  border-radius: 10px;
+
+
+}
+.dark-mode-child {
+  background-color: var(--darkThemeBG);
+  color: var(--darkThemeText);
+}
+
+.light-mode-child {
+  background-color: var(--lightThemeBG);
+
+  color: var(--lightThemeText);
+
+}
+#modal-header.dark-mode-child {
+  border-radius: 10px 10px 0 0 ;
+
+}
+#modal-body.dark-mode-child {
+  border-radius: 0 0 10px 10px ;
+
+}
+form.dark-mode-child {
+  border-radius: 0 0 10px 10px ;
+
+}
+form.light-mode-child {
+  border-radius: 0 0 10px 10px ;
+
+}
+
+#modal-header.light-mode-child {
+  border-radius: 10px 10px 0 0 ;
+
+
+}
+#modal-body.light-mode-child {
+  border-radius: 0 0 10px 10px ;
+
+
+}
+
+
+#modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: 200ms ease-in-out;
+  border: 1px solid black;
+  border-radius: 10px;
+  z-index: 10;
+  background-color: var(--background-color);
+  width: 500px;
+  max-width: 80%;
+}
+
+#modal.active {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+#modal-header {
+  padding: 10px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid black;
+}
+
+#modal-header .title {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+#modal-header .close-button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: none;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.profile-default-img {
+  background-color: rgb(128, 128, 128);
+}
+
+#overlay {
+  position: fixed;
+  opacity: 0;
+  transition: 200ms ease-in-out;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, .5);
+  pointer-events: none;
+}
+
+#overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+form {
+  padding: 5px;
+}
+
+
+.modal-label {
+  padding: 5px;
+}
+
+#name {
+  width: 98%;
+}
+
+#email {
+  width: 98%;
+}
+
+#color {
+  width: 100%;
+}
+
+#save {
+  padding-top: 5px;
+  padding-left: 20px;
+  padding-bottom: 15px;
+}
+
+.save-button {
+  background-color: var(--action-color);
+  color: white;
+  border-radius: 3px;
+  border-color: darkgray;
+  padding-left: 10px;
+  padding-right: 10px;
+
+  
+
+}
+
+#logout {
+  padding-top: 5px;
+  padding-right: 20px;
+  padding-bottom: 15px;
+}
+
+
+
+
+/* These rules only apply if the window's max-width is 500px or less */
+@media all and (max-width: 500px) {
+
+  .grid-container {
+    display:none;
+  }
+
+  .grid-container-sm > div {
+      background-color: var(--background-color);
+      text-align: center;
+      padding: 20px 0;
+      font: 30px bold var(--text-color);
+  }
+
+  .grid-container-sm {
+      display: grid;
+      grid-template-columns: 40vw auto auto auto;
+
+  }
+  #mn-item-01 {
+      border-right: none;
+
+  }
+
+  #note-name {
+      display: none;
+  }
+
+  .note-list {
+      display: none;
+  }
+
+  .text-container-02 {
+      width: 100vw
+  }
+  .img-round {
+      border-radius: 0%;
+
+  }
+}  
+
