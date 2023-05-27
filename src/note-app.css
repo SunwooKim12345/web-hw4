@@ -295,7 +295,6 @@ form.light-mode-child {
 
 }
 
-
 #modal {
   position: fixed;
   top: 50%;
@@ -368,14 +367,19 @@ form {
 
 #name {
   width: 98%;
+  border-radius: 3px;
 }
 
 #email {
   width: 98%;
+  border-radius: 3px;
+
 }
 
 #color {
   width: 100%;
+  border-radius: 3px;
+
 }
 
 #save {
@@ -391,8 +395,62 @@ form {
   border-color: darkgray;
   padding-left: 10px;
   padding-right: 10px;
+}
 
-  
+/* Sign in page */
+#login-page {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: 200ms ease-in-out;
+  border: 1px solid black;
+  border-radius: 10px;
+  z-index: 1;
+  background-color: var(--background-color);
+  width: 500px;
+  max-width: 80%;
+}
+
+#login-page.active {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.note-start {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  top: 15%;
+  font-size: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.note-intro {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  top: 25%;
+  font: 20px bold;
+}
+
+#email-log {
+  width: 98%;
+  border-radius: 3px;
+  border: 1px solid black;
+  height: 25px;
+
+}
+
+.login-button {
+  background-color: rgb(91, 208, 91);
+  color: white;
+  margin-left: 34%;
+  margin-right: 35%;
+  margin-bottom: 2%;
+  border-radius: 5px;
+  border: 1px solid rgb(91, 208, 91);
+  height: 35px;
 
 }
 
@@ -402,7 +460,85 @@ form {
   padding-bottom: 15px;
 }
 
+#password {
+  width: 98%;
+  border-radius: 3px;
+  border: 1px solid black;
+  height: 25px;
+}
 
+#login {
+  width: 98%;
+  border-radius: 5px;
+  height: 30px;
+  color: white;
+  border: 1px solid var(--action-color);
+  background-color: var(--action-color);
+
+}
+
+/* Sign up */
+#modal-signup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: 200ms ease-in-out;
+  border: 1px solid black;
+  border-radius: 10px;
+  z-index: 20;
+  background-color: var(--background-color);
+  width: 500px;
+  height: 280px;
+  max-width: 80%;
+}
+
+#modal-signup.active {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+#modal-header-log {
+  padding: 10px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#modal-header-log .title {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+#modal-header-log .close-button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: none;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+#name-log {
+  width: 98%;
+  border-radius: 3px;
+  border: 1px solid black;
+  height: 25px;
+
+}
+
+.log-out {
+  
+  width: 20%;
+  border-radius: 5px;
+  color: white;
+  background-color: rgb(91, 208, 91);
+  color: white;
+  border: 1px solid rgb(91, 208, 91);
+  height: 35px;
+  margin-left: 39%;
+
+
+}
 
 
 /* These rules only apply if the window's max-width is 500px or less */

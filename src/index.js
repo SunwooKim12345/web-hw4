@@ -6,15 +6,19 @@ import reportWebVitals from './reportWebVitals';
 import NoteHeaderSm from './NoteHeaderSm';
 import {NoteBody} from './NoteBody';
 import Modal  from './Modal';
+import SignIn from './SignIn';
+import { SignUp } from './SignUp';
 
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <>
-    <NoteHeader />
+    {/* <NoteHeader />
     <NoteHeaderSm />
-    <NoteBody />
+    <NoteBody /> */}
+    <SignIn />
+    <SignUp />
   </>
 );
 
