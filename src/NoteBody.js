@@ -16,7 +16,11 @@ const NoteBody = () => {
     const text = document.querySelector('.edit-text-area');
 
     const [ noteList, setNoteList ] = useState([]);
+    const [ isVisible, setIsvisible ] = useState( true );
 
+    const makeVisible = () => {
+        setIsvisible( !isVisible );
+    }
 
     useEffect(() => {
 

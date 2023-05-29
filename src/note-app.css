@@ -453,6 +453,18 @@ form {
   height: 35px;
 
 }
+.login-button-sm {
+  display: none;
+  background-color: rgb(91, 208, 91);
+  color: white;
+  margin-left: 34%;
+  margin-right: 35%;
+  margin-bottom: 2%;
+  border-radius: 5px;
+  border: 1px solid rgb(91, 208, 91);
+  height: 35px;
+
+}
 
 #logout {
   padding-top: 5px;
@@ -491,6 +503,17 @@ form {
   width: 500px;
   height: 280px;
   max-width: 80%;
+}
+#modal-signup-sm {
+
+  z-index: 20;
+  background-color: var(--background-color);
+
+}
+
+
+#modal-signup-sm.active {
+  transform: translate(0,0) scale(1);
 }
 
 #modal-signup.active {
@@ -579,6 +602,13 @@ form {
   .img-round {
       border-radius: 0%;
 
+  }
+  .login-button {
+    display: none;
+  }
+
+  .login-button-sm {
+    display: block;
   }
 }  
 

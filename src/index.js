@@ -8,18 +8,31 @@ import {NoteBody} from './NoteBody';
 import Modal  from './Modal';
 import SignIn from './SignIn';
 import { SignUp } from './SignUp';
+import { SignUpSm } from './SignUpSm';
+import { useState } from 'react';
 
+const App = () => {
+  
+  const [ isLoggedIn, setIsLoggedIn ] = useState( false );
 
+  const makeLoggedIn = () => {
+    setIsLoggedIn( !isLoggedIn );
+  }
+
+  return (
+    <>
+    { isLoggedIn && <NoteHeader /> }
+    { isLoggedIn && <NoteHeaderSm /> }
+    { isLoggedIn && <NoteBody /> }
+    { !isLoggedIn && <SignIn login={makeLoggedIn}/> }
+    <SignUp />
+  </>
+  );
+}
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <>
-    {/* <NoteHeader />
-    <NoteHeaderSm />
-    <NoteBody /> */}
-    <SignIn />
-    <SignUp />
-  </>
+  <App />
 );
 
 // If you want to start measuring performance in your app, pass a function

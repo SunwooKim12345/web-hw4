@@ -9,6 +9,11 @@ import Square from './square-16.jpg';
 const NoteHeader = () => {
 	
 	const [ profile, setProfile ] = useState( null );
+	const [ isVisible, setIsvisible ] = useState( true );
+
+    const makeVisible = () => {
+        setIsvisible( !isVisible );
+    }
 
 	const profile_change = () => {
 		if ( document.getElementsByClassName('img')[0].src !== 
