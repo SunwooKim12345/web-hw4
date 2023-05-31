@@ -28,7 +28,7 @@ console.log("Ddbug: router: updateNote");
 app.delete("/notes/:id", Comp.deleteNote );
 console.log("Ddbug: router: deleteNote");
 
-app.get("/users", Comp.getUsersTable );
+app.get("/users", Comp.getUsersTable ); 
 console.log("Ddbug: router: getTable");
 
 app.post("/users", Comp.insertUser );

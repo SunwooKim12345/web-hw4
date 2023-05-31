@@ -398,6 +398,13 @@ form {
 }
 
 /* Sign in page */
+.error {
+  color: red;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding-top: 5px;
+}
+
 #login-page {
   position: absolute;
   top: 50%;
@@ -486,6 +493,8 @@ form {
   color: white;
   border: 1px solid var(--action-color);
   background-color: var(--action-color);
+  margin-top: 10px;
+  padding-right: 5px;
 
 }
 

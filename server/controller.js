@@ -11,7 +11,8 @@ const getNotesTable = ( req, res ) => {
           return {
             id: item.id,
             text: item.text,
-            lastUpdatedDate: item.lastUpdatedDate
+            lastUpdatedDate: item.lastUpdatedDate,
+            userEmail: item.userEmail
           };
         });
   
@@ -97,7 +98,8 @@ const getUsersTable = ( req, res ) => {
                   name: item.name,
                   email: item.email,
                   colorScheme: item.colorScheme,
-                  image: item.image
+                  image: item.image,
+                  password: item.password
                 };
               });
         

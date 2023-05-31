@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import { SignUp, open_signup } from './SignUp';
 import { SignUpSm } from './SignUpSm';
+import hashutil from "./hashutil.mjs";
 
 
 const SignIn = ( {login} ) => {
@@ -11,6 +12,33 @@ const SignIn = ( {login} ) => {
     const [ isMainVisible, setIsMainVisible ] = useState( true );
     const [ email, setEmail ] = useState( '' );
     const [ password, setPassword ] = useState( '' );
+    const [ isError, setIsError ] = useState( false );
+
+    const sign_in = () => {
+        
+        fetch("http://localhost:8080/users/")
+        .then((response) => response.json())
+        .then( (data) => {
+            const users = Array.from(Object.values(data.users));
+            console.log(users);
+            let count = 0;
+            for( let idx = 0; idx < users.length; idx++ ) {
+                if ( users[idx].email === email 
+                    && users[idx].password === hashutil(email,password)) {
+                        count++;
+                } 
+            }
+            if( count == 0 ) {
+                setIsError( true );
+                return;
+            }
+            else {
+                makeVisible();
+                login();
+            }
+        })
+        .catch( error => console.error( error ) );
+    }
 
     const makeVisible = () => {
         setIsVisible( !isVisible );
@@ -33,9 +61,10 @@ const SignIn = ( {login} ) => {
                                     <input type="text" id="email-log" onChange={(event) => setEmail(event.target.value)}></input><br />
 
                                     <label htmlFor="password">Password</label><br />
-                                    <input type="text" id="password" onChange={(event) => setPassword(event.target.value)}></input><br /><br />
+                                    <input type="text" id="password" onChange={(event) => setPassword(event.target.value)}></input><br />
 
-                                    <input type="button" id="login" value="Log in" onClick={login}></input><br /><br />
+                                    {isError && <div className='error'> Error: Invalid email and/or password</div>}
+                                    <input type="button" id="login" value="Log in" onClick={sign_in}></input><br /><br />
                                     
                                     <hr></hr>
 
