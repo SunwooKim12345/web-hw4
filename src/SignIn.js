@@ -9,6 +9,8 @@ const SignIn = ( {login} ) => {
     const [ isLoggedIn, setIsLoggedIn ] = useState( false );
     const [ isVisible, setIsVisible ] = useState( false );
     const [ isMainVisible, setIsMainVisible ] = useState( true );
+    const [ email, setEmail ] = useState( '' );
+    const [ password, setPassword ] = useState( '' );
 
     const makeVisible = () => {
         setIsVisible( !isVisible );
@@ -28,10 +30,10 @@ const SignIn = ( {login} ) => {
                                 <div className="modal-label">
 
                                     <label htmlFor="email-log">Email</label><br />
-                                    <input type="text" id="email-log" ></input><br />
+                                    <input type="text" id="email-log" onChange={(event) => setEmail(event.target.value)}></input><br />
 
                                     <label htmlFor="password">Password</label><br />
-                                    <input type="text" id="password" ></input><br /><br />
+                                    <input type="text" id="password" onChange={(event) => setPassword(event.target.value)}></input><br /><br />
 
                                     <input type="button" id="login" value="Log in" onClick={login}></input><br /><br />
                                     
@@ -48,7 +50,7 @@ const SignIn = ( {login} ) => {
                 </div>
             </div>
         </div> }
-        {isVisible && <SignUpSm close_signup_sm={makeVisible} />}
+        {isVisible && <SignUpSm login={login} close_signup_sm={makeVisible} />}
     </div> 
     );         
 

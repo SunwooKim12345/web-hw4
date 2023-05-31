@@ -4,6 +4,7 @@ const Notes = function( note ) {
     this.id = note.id;
     this.text = note.text;
     this.lastUpdatedDate = note.lastUpdatedDate;
+    this.userEmail = note.userEmail;
 }
 
 const Users = function( user ) {
@@ -12,6 +13,7 @@ const Users = function( user ) {
     this.email = user.email;
     this.colorScheme = user.colorScheme;
     this.image = user.image;
+    this.password = password;
 }
 
 
@@ -106,6 +108,24 @@ Users.getAll = ( result ) => {
       });
 }
 
+Users.insert = ( user, result ) => {
+    console.log( "Insert New User!" );
+    let query = "INSERT INTO users (name, email, password) VALUES (?, ?, ?)";
+    let values = [ user.name, user.email, user.password ];
+
+    sql.query( query, values, ( err, res ) => {
+        if ( err ) {
+            console.log( "error: ", err );
+            result( null, err );
+
+            return;
+        }
+
+        console.log( "Inserted user ", res );
+
+        return result( null, res );
+    });
+};
 
 Users.update = ( id, updateUser, result ) => {
     console.log( "Update user!" );

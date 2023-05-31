@@ -31,6 +31,9 @@ console.log("Ddbug: router: deleteNote");
 app.get("/users", Comp.getUsersTable );
 console.log("Ddbug: router: getTable");
 
+app.post("/users", Comp.insertUser );
+console.log("Dbug: router: insertUser");
+
 app.put("/users/:id", Comp.updateUser );
 console.log("Ddbug: router: updateuser");
 

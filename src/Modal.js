@@ -26,7 +26,7 @@ const close_modal = ( event ) => {
 
 }
 
-const Modal = () => {
+const Modal = ({logout}) => {
 
     const [ name, setName ] = useState( '' );
     const [ email, setEmail ] = useState( '' );
@@ -235,7 +235,7 @@ const Modal = () => {
 
                             <div className="grid-container-03">
                                 <div id="save"><input className="save-button v-align-left" type="button" value="Save" onClick={save_modal}></input></div>
-                                <div id="logout"><input className="v-align-right" type="button" value="Logout" onClick={close_modal}></input></div>
+                                <div id="logout"><input className="v-align-right" type="button" value="Logout" onClick={logout}></input></div>
                             </div>
                         </form>
                 </div>

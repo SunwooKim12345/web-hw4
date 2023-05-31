@@ -35,7 +35,22 @@ const insertNote = ( req, res ) => {
             res.json( data );
         }
     })
-}
+};
+
+const insertUser = ( req, res ) => {
+    const user = req.body;
+
+    Users.insert( user, ( err, data ) => {
+        if ( err ) {
+            res.status(500).send({
+                message:
+                    err.message || "Some error occurred."
+            });
+        } else {
+            res.json( data );
+        }
+    })
+};
 
 const deleteNote = ( req, res ) => {
     const id = req.params.id;
@@ -50,7 +65,8 @@ const deleteNote = ( req, res ) => {
             res.json( data );
         }
     })
-}
+};
+
 const updateNote = ( req, res ) => {
     const id = req.params.id;
     const updateNote = req.body;
@@ -65,7 +81,7 @@ const updateNote = ( req, res ) => {
             res.json( data );
         }
     })
-}
+};
 
 const getUsersTable = ( req, res ) => {
     Users.getAll( ( err, data ) => {
@@ -104,7 +120,7 @@ const updateUser = ( req, res ) => {
             res.json( data );
         }
     })
-}
+};
 
 const updateProfile = ( req, res ) => {
     const id = req.params.id;
@@ -120,13 +136,14 @@ const updateProfile = ( req, res ) => {
             res.json( data );
         }
     })
-}
+};
 
 
 module.exports = {
     getNotesTable,
     getUsersTable,
     insertNote,
+    insertUser,
     deleteNote,
     updateNote,
     updateUser,

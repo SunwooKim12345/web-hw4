@@ -6,7 +6,7 @@ import { Modal, open_modal } from './Modal';
 import Profile from './profile.jpg';
 import Square from './square-16.jpg';
 
-const NoteHeader = () => {
+const NoteHeader = ({logout}) => {
 	
 	const [ profile, setProfile ] = useState( null );
 	const [ isVisible, setIsvisible ] = useState( true );
@@ -72,7 +72,7 @@ const NoteHeader = () => {
 				<button type="button" onClick={delete_note}><span className="fa fa-trash"></span></button>
 			</div>
 		</div>
-		<Modal />
+		<Modal logout={logout}/>
 
 	</>
 

@@ -21,11 +21,11 @@ const App = () => {
 
   return (
     <>
-    { isLoggedIn && <NoteHeader /> }
+    { isLoggedIn && <NoteHeader logout={makeLoggedIn}/> }
     { isLoggedIn && <NoteHeaderSm /> }
     { isLoggedIn && <NoteBody /> }
     { !isLoggedIn && <SignIn login={makeLoggedIn}/> }
-    <SignUp />
+    { !isLoggedIn && <SignUp login={makeLoggedIn}/> }
   </>
   );
 }

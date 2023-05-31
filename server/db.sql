@@ -6,6 +6,7 @@ CREATE TABLE notes (
 	id int NOT NULL AUTO_INCREMENT,
 	text varchar(255),
 	lastUpdatedDate varchar(255),
+	userEmail varchar(255),
 	Primary key(id)
 );
 
@@ -15,6 +16,7 @@ CREATE TABLE users (
 	email varchar(255),
 	colorScheme varchar(255) DEFAULT 'light',
 	image TEXT,
+	password varchar(255),
 	Primary key(id)
 );
 
