@@ -2,13 +2,21 @@ import Note from './Note';
 import { NoteBody } from './NoteBody';
 import axios from 'axios';
 import _ from 'lodash';
+import Cookies from 'js-cookie';
+
+const user = Cookies.get('user');
 
 const display_notes = () => {
+
+    const user = Cookies.get('user');
+    console.log("user: ");
+    console.log( user );
 
     fetch("http://localhost:8080/notes")
     .then((response) => response.json())
     .then((data) => {
-        const notesArray = Array.from(Object.values(data.notes));
+        let notesArray = Array.from(Object.values(data.notes));
+        notesArray = notesArray.filter( (data) => data.userEmail == user );
         notesArray.sort((a, b) => {
             return b.lastUpdatedDate.localeCompare(a.lastUpdatedDate);
         });
@@ -69,7 +77,7 @@ const add_selected = () => {
     fetch("http://localhost:8080/notes")
     .then((response) => response.json())
     .then((data) => {
-        const notesArray = Array.from(Object.values(data.notes));
+        let notesArray = Array.from(Object.values(data.notes));
 
         if ( notesArray !== null && notesArray.length !== 0 ) {
             const note_selected = 
@@ -85,7 +93,7 @@ const handle_editText = () => {
     .then((response) => response.json())
     .then((data) => {
 
-        const notesArray = Array.from(Object.values(data.notes));
+        let notesArray = Array.from(Object.values(data.notes));
 
         if( notesArray.length !== 0 ) {
 
@@ -235,7 +243,7 @@ const plus_button = () => {
     });
 
     text_content.value = "";
-    const newNote = new Note( 'New Note', update_time );
+    const newNote = new Note( 'New Note', update_time, user );
 
     axios.post("http://localhost:8080/notes", newNote )
     .then( response => {
@@ -316,7 +324,7 @@ const delete_note = () => {
                 notes[index].remove();
 
                 
-                axios.delete("http://localhost:8080/notes/" + id )
+                axios.delete("http://localhost:8080/notes/" + user )
                 .then( response => console.log( response.data ) )
                 .catch( error => console.error( error ) );
 
@@ -413,9 +421,9 @@ const update_content = () => {
             note_element.innerHTML = text_element.value + "<br>" + update() + 
                                         "<div class='note-id'>" + id + '</div>';
         }
-        const new_data = new Note( text_element.value, update() );
+        const new_data = new Note( text_element.value, update(), user );
 
-        axios.put("http://localhost:8080/notes/" + id, new_data )
+        axios.put("http://localhost:8080/notes/" + user, new_data )
         .then( response => console.log( response.data ) )
         .catch( error => console.error( error ) );
     }

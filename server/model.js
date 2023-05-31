@@ -37,8 +37,8 @@ Notes.getAll = ( result ) => {
 
 Notes.insert = ( newNote, result ) => {
     console.log( "Insert New Note!" );
-    let query = "INSERT INTO notes (text, lastUpdatedDate) VALUES (?, ?)";
-    let values = [ newNote.text, newNote.lastUpdatedDate ];
+    let query = "INSERT INTO notes (text, lastUpdatedDate, userEmail) VALUES (?, ?, ?)";
+    let values = [ newNote.text, newNote.lastUpdatedDate, newNote.userEmail ];
 
     sql.query( query, values, ( err, res ) => {
         if ( err ) {
@@ -56,7 +56,7 @@ Notes.insert = ( newNote, result ) => {
 
 Notes.delete = ( deleteNote, result ) => {
     console.log( "Delete note!" );
-    let query = "DELETE FROM notes WHERE id=?";
+    let query = "DELETE FROM notes WHERE userEmail=?";
     let values = [ deleteNote ];
 
     sql.query( query, values, ( err, res ) => {
@@ -73,10 +73,10 @@ Notes.delete = ( deleteNote, result ) => {
     })
 }
 
-Notes.update = ( id, updateNote, result ) => {
+Notes.update = ( user, updateNote, result ) => {
     console.log( "Update note!" );
-    let query = "UPDATE notes SET text=?, lastUpdatedDate=? WHERE id=?";
-    let values = [updateNote.text, updateNote.lastUpdatedDate, id];
+    let query = "UPDATE notes SET text=?, lastUpdatedDate=? WHERE userEmail=?";
+    let values = [updateNote.text, updateNote.lastUpdatedDate, user];
 
     sql.query( query, values, ( err, res ) => {
         if ( err ) {
@@ -127,10 +127,10 @@ Users.insert = ( user, result ) => {
     });
 };
 
-Users.update = ( id, updateUser, result ) => {
+Users.update = ( user, updateUser, result ) => {
     console.log( "Update user!" );
-    let query = "UPDATE users SET name=?, email=?, colorScheme=? WHERE id=?";
-    let values = [updateUser.name, updateUser.email, updateUser.colorScheme, id];
+    let query = "UPDATE users SET name=?, email=?, colorScheme=? WHERE user=?";
+    let values = [updateUser.name, updateUser.email, updateUser.colorScheme, user];
 
     sql.query( query, values, ( err, res ) => {
         if ( err ) {
@@ -146,10 +146,10 @@ Users.update = ( id, updateUser, result ) => {
     })
 }
 
-Users.updateImage = ( id, updateUser, result ) => {
+Users.updateImage = ( user, updateUser, result ) => {
     console.log( "Update user!" );
-    let query = "UPDATE users SET image=? WHERE id=?";
-    let values = [updateUser.image, id];
+    let query = "UPDATE users SET image=? WHERE user=?";
+    let values = [updateUser.image, user];
 
     sql.query( query, values, ( err, res ) => {
         if ( err ) {

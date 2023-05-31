@@ -3,7 +3,7 @@ import axios from 'axios';
 import { SignUp, open_signup } from './SignUp';
 import { SignUpSm } from './SignUpSm';
 import hashutil from "./hashutil.mjs";
-
+import Cookies from 'js-cookie';
 
 const SignIn = ( {login} ) => {
 
@@ -14,6 +14,10 @@ const SignIn = ( {login} ) => {
     const [ password, setPassword ] = useState( '' );
     const [ isError, setIsError ] = useState( false );
 
+    const handle_login_success = ( user ) => {
+        Cookies.set( 'user', user );
+    }
+
     const sign_in = () => {
         
         fetch("http://localhost:8080/users/")
@@ -22,10 +26,12 @@ const SignIn = ( {login} ) => {
             const users = Array.from(Object.values(data.users));
             console.log(users);
             let count = 0;
+            let user = '';
             for( let idx = 0; idx < users.length; idx++ ) {
                 if ( users[idx].email === email 
                     && users[idx].password === hashutil(email,password)) {
                         count++;
+                        user = users[idx].email
                 } 
             }
             if( count == 0 ) {
@@ -35,6 +41,7 @@ const SignIn = ( {login} ) => {
             else {
                 makeVisible();
                 login();
+                handle_login_success( user );
             }
         })
         .catch( error => console.error( error ) );

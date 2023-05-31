@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import Profile from './profile.jpg';
 import Square from './square-16.jpg';
 import axios from 'axios';
+import Cookies from 'js-cookie';
 
 const open_modal = () => {
     const modal = document.querySelector('#modal');
@@ -33,6 +34,7 @@ const Modal = ({logout}) => {
     const [ color, setColor ] = useState( 'light' );
     const [ profile, setProfile ] = useState( null );
 
+    const user = Cookies.get('user');
     const file_input = useRef( null );
 
     const file_change = ( event ) => {
@@ -41,7 +43,7 @@ const Modal = ({logout}) => {
         const reader = new FileReader();
 
         reader.onload = ( event ) => {
-            axios.put("http://localhost:8080/users/1/image", {"image": event.target.result} )
+            axios.put("http://localhost:8080/users/" + user +"/image", {"image": event.target.result} )
             .then( response => console.log( response.data ) )
             .catch( error => console.error( error ) );      
 
@@ -81,7 +83,7 @@ const Modal = ({logout}) => {
             setColor(document.getElementById('color').value);
         }
 
-        axios.put("http://localhost:8080/users/1" , {"name": name, "email": email, "colorScheme" : color } )
+        axios.put("http://localhost:8080/users/" + user , {"name": name, "email": email, "colorScheme" : color } )
         .then( response => console.log( response.data ) )
         .catch( error => console.error( error ) );
         

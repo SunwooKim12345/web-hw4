@@ -1,8 +1,10 @@
 class Note {
-    constructor( text, lastUpdatedDate ) {
+    constructor( text, lastUpdatedDate, userEmail ) {
   
         this.text = text;
         this.lastUpdatedDate = lastUpdatedDate;
+        this.userEmail = userEmail;
+
     }
 
 }

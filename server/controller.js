@@ -54,9 +54,9 @@ const insertUser = ( req, res ) => {
 };
 
 const deleteNote = ( req, res ) => {
-    const id = req.params.id;
+    const user = req.params.user;
 
-    Notes.delete( id, ( err, data ) => {
+    Notes.delete( user, ( err, data ) => {
         if ( err ) {
             res.status(500).send({
                 message: 
@@ -69,10 +69,10 @@ const deleteNote = ( req, res ) => {
 };
 
 const updateNote = ( req, res ) => {
-    const id = req.params.id;
+    const user = req.params.user;
     const updateNote = req.body;
 
-    Notes.update( id, updateNote, ( err, data ) => {
+    Notes.update( user, updateNote, ( err, data ) => {
         if ( err ) {
             res.status(500).send({
                 message: 
@@ -109,10 +109,10 @@ const getUsersTable = ( req, res ) => {
 };
 
 const updateUser = ( req, res ) => {
-    const id = req.params.id;
+    const user = req.params.user;
     const updateUser = req.body;
 
-    Users.update( id, updateUser, ( err, data ) => {
+    Users.update( user, updateUser, ( err, data ) => {
         if ( err ) {
             res.status(500).send({
                 message: 
@@ -125,10 +125,10 @@ const updateUser = ( req, res ) => {
 };
 
 const updateProfile = ( req, res ) => {
-    const id = req.params.id;
+    const user = req.params.user;
     const updateUser = req.body;
 
-    Users.updateImage( id, updateUser, ( err, data ) => {
+    Users.updateImage( user, updateUser, ( err, data ) => {
         if ( err ) {
             res.status(500).send({
                 message: 

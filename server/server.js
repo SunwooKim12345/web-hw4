@@ -22,10 +22,10 @@ console.log("Ddbug: router: getTable");
 app.post("/notes", Comp.insertNote );
 console.log("Ddbug: router: insertNote");
 
-app.put("/notes/:id", Comp.updateNote );
+app.put("/notes/:user", Comp.updateNote );
 console.log("Ddbug: router: updateNote");
 
-app.delete("/notes/:id", Comp.deleteNote );
+app.delete("/notes/:user", Comp.deleteNote );
 console.log("Ddbug: router: deleteNote");
 
 app.get("/users", Comp.getUsersTable ); 
@@ -34,10 +34,10 @@ console.log("Ddbug: router: getTable");
 app.post("/users", Comp.insertUser );
 console.log("Dbug: router: insertUser");
 
-app.put("/users/:id", Comp.updateUser );
+app.put("/users/:user", Comp.updateUser );
 console.log("Ddbug: router: updateuser");
 
-app.put("/users/:id/image", Comp.updateProfile );
+app.put("/users/:user/image", Comp.updateProfile );
 
 
 
