@@ -129,7 +129,7 @@ Users.insert = ( user, result ) => {
 
 Users.update = ( user, updateUser, result ) => {
     console.log( "Update user!" );
-    let query = "UPDATE users SET name=?, email=?, colorScheme=? WHERE user=?";
+    let query = "UPDATE users SET name=?, email=?, colorScheme=? WHERE email=?";
     let values = [updateUser.name, updateUser.email, updateUser.colorScheme, user];
 
     sql.query( query, values, ( err, res ) => {
@@ -148,7 +148,7 @@ Users.update = ( user, updateUser, result ) => {
 
 Users.updateImage = ( user, updateUser, result ) => {
     console.log( "Update user!" );
-    let query = "UPDATE users SET image=? WHERE user=?";
+    let query = "UPDATE users SET image=? WHERE email=?";
     let values = [updateUser.image, user];
 
     sql.query( query, values, ( err, res ) => {

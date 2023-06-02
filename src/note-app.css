@@ -30,7 +30,7 @@
 
 
 body {
-  background-color: var(--standardBackgroundColor);
+  background-color: var(--lightThemeBG);
   margin: 0px;
 }
 
@@ -55,6 +55,7 @@ input[type=text] {
 
 input[type=submit]:hover,
 input[type=button]:hover,
+.profile-img img:hover,
 button:hover {
   transform: scale(1.1);
 }
@@ -233,6 +234,7 @@ begin
 
 .selected {
   background-color: var(--selected-color);
+  color: black;
 }
 
 /* 
@@ -252,7 +254,7 @@ begin
 .light-mode {
   background-color: var(--lightThemeBG);
   color: var(--lightThemeText);
-  border-radius: 10px;
+  /* border-radius: 10px; */
 
 
 }
@@ -411,7 +413,6 @@ form {
   left: 50%;
   transform: translate(-50%, -50%) scale(0);
   transition: 200ms ease-in-out;
-  border: 1px solid black;
   border-radius: 10px;
   z-index: 1;
   background-color: var(--background-color);

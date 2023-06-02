@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import hashutil from "./hashutil.mjs";
+import Cookies from 'js-cookie';
 
 
 const SignUpSm = ( {close_signup_sm, login} ) => {
@@ -32,6 +33,7 @@ const SignUpSm = ( {close_signup_sm, login} ) => {
             .then( response => console.log( response.data ) ) 
             .catch( error => console.error( error ) );
             
+            Cookies.set( 'user', email );
             login();
     
         }

@@ -63,10 +63,20 @@ const Modal = ({logout}) => {
 
         reader.readAsDataURL(file);
         
-        
-
-
     }
+
+    const profile_remove = () => {
+        axios.put("http://localhost:8080/users/" + user + "/image", {"image": null } )
+        .then( response => console.log( response.data ) )
+        .catch( error => console.error( error ) );   
+
+        setProfile( Square );
+        document.getElementsByClassName('img')[0].classList.add("img-square");
+        document.getElementsByClassName('img')[0].classList.remove("img-round");
+        document.getElementsByClassName('img')[1].classList.add("img-square");
+        document.getElementsByClassName('img')[1].classList.remove("img-round");
+    }
+
     const file_select = (event) => {
         event.preventDefault();
         file_input.current.click();
@@ -101,6 +111,12 @@ const Modal = ({logout}) => {
         if ( color == 'light' || color === null ) {
             parent.classList.add('light-mode');
             parent.classList.remove('dark-mode');
+
+
+            document.getElementsByClassName('header')[0].classList.add('light-mode');
+            document.getElementsByClassName('header')[0].classList.remove('dark-mode');
+            document.getElementsByTagName('body')[0].classList.add('light-mode');
+            document.getElementsByTagName('body')[0].classList.remove('dark-mode');
     
             children.forEach( child => {
                 child.classList.add('light-mode-child');
@@ -111,6 +127,11 @@ const Modal = ({logout}) => {
         } else {
             parent.classList.remove('light-mode');
             parent.classList.add('dark-mode');
+            document.getElementsByClassName('header')[0].classList.add('dark-mode');
+            document.getElementsByClassName('header')[0].classList.remove('light-mode');
+            document.getElementsByTagName('body')[0].classList.add('dark-mode');
+            document.getElementsByTagName('body')[0].classList.remove('light-mode');
+
             children.forEach( child => {
                 child.classList.add('dark-mode-child');
                 child.classList.remove('light-mode-child');
@@ -126,12 +147,17 @@ const Modal = ({logout}) => {
         .then((response) => response.json())
         .then((data) => {
             const userData = Array.from(Object.values(data.users));
-            console.log( userData[0].colorScheme );
+            let userIdx;
+            for( let idx = 0; idx < userData.length; idx++ ) {
+                if ( userData[idx].email === user ) {
+                    userIdx = idx;
+                }
+            } 
 
-            const stored_name = userData[0].name;
-            const stored_email = userData[0].email;
-            const stored_color = userData[0].colorScheme;
-            const stored_profile = userData[0].image;
+            const stored_name = userData[userIdx].name;
+            const stored_email = userData[userIdx].email;
+            const stored_color = userData[userIdx].colorScheme;
+            const stored_profile = userData[userIdx].image;
             
             if ( stored_name !== null ) { 
                 setName(stored_name); 
@@ -170,6 +196,10 @@ const Modal = ({logout}) => {
              if ( stored_color == 'light' || stored_color === null ) {
             parent.classList.add('light-mode');
             parent.classList.remove('dark-mode');
+            document.getElementsByClassName('header')[0].classList.add('light-mode');
+            document.getElementsByClassName('header')[0].classList.remove('dark-mode');
+            document.getElementsByTagName('body')[0].classList.add('light-mode');
+            document.getElementsByTagName('body')[0].classList.remove('dark-mode');
     
             children.forEach( child => {
                 child.classList.add('light-mode-child');
@@ -180,6 +210,10 @@ const Modal = ({logout}) => {
             } else {
                 parent.classList.add('dark-mode');
                 parent.classList.remove('light-mode');
+                document.getElementsByClassName('header')[0].classList.add('dark-mode');
+                document.getElementsByClassName('header')[0].classList.remove('light-mode');
+                document.getElementsByTagName('body')[0].classList.add('dark-mode');
+                document.getElementsByTagName('body')[0].classList.remove('light-mode');
 
                 children.forEach( child => {
                     child.classList.add('dark-mode-child');
@@ -210,13 +244,13 @@ const Modal = ({logout}) => {
                 <div id="modal-body">
                         <form>
                             <div className="grid-container-01">
-                                <div className="profile-img"><img className="img img-round" src={profile} alt="profile"></img></div>
+                                <div className="profile-img"><img className="img img-round" src={profile} alt="profile" onClick={file_select}></img></div>
                                 <div>
                                     <button id="add-img" onClick={file_select}>Add New Image</button>
                                     <input className="v-align-center" type="file" style={{ display: 'none' }} 
                                                             ref={file_input} onChange={file_change}/>
                                 </div>
-                                <div><input className="v-align-right" type="button" value="Remove Image"></input></div>
+                                <div><input className="v-align-right" type="button" value="Remove Image" onClick={profile_remove}></input></div>
                             </div>
                             <br />
 

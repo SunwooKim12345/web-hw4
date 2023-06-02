@@ -94,6 +94,7 @@ const handle_editText = () => {
     .then((data) => {
 
         let notesArray = Array.from(Object.values(data.notes));
+        notesArray = notesArray.filter( (data) => data.userEmail == user );
 
         if( notesArray.length !== 0 ) {
 

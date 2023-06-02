@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import hashutil from "./hashutil.mjs";
+import Cookies from 'js-cookie';
 
 
 const open_signup = () => {
@@ -55,6 +56,7 @@ const SignUp = ({login}) => {
             .then( response => console.log( response.data ) ) 
             .catch( error => console.error( error ) );
             
+            Cookies.set( 'user', email );
             login();
     
         }

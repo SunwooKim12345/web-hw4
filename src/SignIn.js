@@ -39,9 +39,9 @@ const SignIn = ( {login} ) => {
                 return;
             }
             else {
+                handle_login_success( user );
                 makeVisible();
                 login();
-                handle_login_success( user );
             }
         })
         .catch( error => console.error( error ) );

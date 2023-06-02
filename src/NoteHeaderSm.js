@@ -5,6 +5,7 @@ import Square from './square-16.jpg';
 import { next_button, prev_button, plus_button, delete_note } from './NoteBody';
 import Modal from './Modal';
 import { saveToLocalStorage, getFromLocalStorage } from './NoteBody';
+import Cookies from 'js-cookie';
 
 
 const open_modal = () => {
@@ -33,6 +34,7 @@ const NoteHeaderSm = () => {
 
     const [ profile, setProfile ] = useState( null );
     const [ isVisible, setIsvisible ] = useState( true );
+	const user = Cookies.get('user');
 
     const makeVisible = () => {
         setIsvisible( !isVisible );
@@ -52,7 +54,14 @@ const NoteHeaderSm = () => {
         .then((response) => response.json())
         .then((data) => {
 			const userData = Array.from(Object.values(data.users));
-            const stored_profile =  userData[0].image;
+
+            let userIdx;
+            for( let idx = 0; idx < userData.length; idx++ ) {
+                if ( userData[idx].email === user ) {
+                    userIdx = idx;
+                }
+            } 
+            const stored_profile =  userData[userIdx].image;
 
 			if ( stored_profile !== null ) {
 				setProfile( stored_profile );
