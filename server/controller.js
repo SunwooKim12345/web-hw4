@@ -1,4 +1,12 @@
 const { Notes, Users } = require("./model");
+const cloudinary = require('cloudinary').v2;
+
+// Configuration 
+cloudinary.config({
+    cloud_name: "dds7vl78d",
+    api_key: "232594359965533",
+    api_secret: "S71FyXUZ4-JcAKCR3AFPkafWI8k"
+});
 
 const getNotesTable = ( req, res ) => {
     Notes.getAll( ( err, data ) => {
@@ -127,6 +135,19 @@ const updateUser = ( req, res ) => {
 const updateProfile = ( req, res ) => {
     const user = req.params.user;
     const updateUser = req.body;
+    const pro_res = cloudinary.uploader.upload( updateUser.image, {public_id: "profile"} );
+    pro_res.then((data) => {
+        console.log(data);
+        console.log(data.secure_url);
+      }).catch((err) => {
+        console.log(err);
+      });
+
+    const url = cloudinary.url("profile", {
+        width: 100,
+        height: 150,
+        Crop: 'fill'
+    });
 
     Users.updateImage( user, updateUser, ( err, data ) => {
         if ( err ) {
