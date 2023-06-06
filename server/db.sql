@@ -1,4 +1,4 @@
-CREATE mydb;
+CREATE DATABASE mydb;
 
 USE mydb;
 
